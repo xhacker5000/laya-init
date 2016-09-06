@@ -1,4 +1,4 @@
-# antd-init
+# laya-init
 
 [![NPM version](https://img.shields.io/npm/v/antd-init.svg?style=flat)](https://npmjs.org/package/antd-init)
 
