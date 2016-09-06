@@ -1,6 +1,6 @@
 {
   "name": "laya-init",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "quick generate laya Project for grunt work flow",
   "bin": {
     "laya-init": "./bin/laya-init"
@@ -8,6 +8,10 @@
   "keywords": [
     "laya-init"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xhacker5000/laya-init"
+  },
   "author": "Xhacker",
   "license": "ISC"
 }
