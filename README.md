@@ -14,7 +14,7 @@
 - package Laya core libs with one file.
 
 
-More usage: http://ant-tool.github.io/
+More usage: http://www.layabox.com/
 
 ## Install
 
