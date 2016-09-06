@@ -1,0 +1,100 @@
+#!/usr/bin/env node
+
+
+if (process.argv.length === 3 && (process.argv[2] === '-v' || process.argv[2] === '--version')) {
+  console.log(require('../package').version);
+  return;
+}
+
+if(process.argv.length === 3 && process.argv[2] === '-h'){
+	console.log('this is laya project generator with grunt work flow');
+	return;
+}
+
+console.log('ready for auto generator LayaProject');
+init();
+
+
+
+
+function init(){
+
+	var exec = require('child_process').exec;
+	console.log('npm package downloading...');
+
+
+
+	exec('npm install grunt-contrib-concat --save',function(err,stdout,stderr){
+		console.log(stdout);
+	});
+	exec('npm install grunt-contrib-connect --save',function(err,stdout,stderr){
+		console.log(stdout);
+	});
+	exec('npm install grunt-contrib-uglify --save',function(err,stdout,stderr){
+		console.log(stdout);
+	});
+	exec('npm install grunt-contrib-watch --save',function(err,stdout,stderr){
+		console.log(stdout);
+	});
+	exec('npm install grunt-shell --save',function(err,stdout,stderr){
+		console.log(stdout);
+		construct_filesystem();
+	});
+
+
+	
+
+}
+
+
+
+function construct_filesystem(){
+
+
+	var exec = require('child_process').exec;
+	console.log('constuct project sturct');
+
+	exec('mkdir libs');
+	exec('mkdir src');
+	var cp_cmd = 'cp -rf ' + __dirname + '/../template/libs/*' + ' ./libs/';  
+	console.log(cp_cmd);
+
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+	});
+
+	var template_path = __dirname + '/../template/';
+
+	cp_cmd = 'cp ' + template_path +'Gruntfile.js ./'; 
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+	});
+
+	cp_cmd = 'cp -rf ' + template_path + 'src/* ./src/'; 
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+	});
+
+	cp_cmd = 'cp ' + template_path +'onlycomplie.sh ./'; 
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+	});
+
+	cp_cmd = 'cp ' + template_path +'index.html ./'; 
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+	});
+
+	cp_cmd = 'cp ' + template_path + 'index.html';
+	exec(cp_cmd,function(err,stdout,stderr){
+		console.log(stdout);
+		console.log('project created');
+		console.log('use [grunt serve] to start project ,enjoy Laya');
+	});
+
+
+
+
+}
+
+
